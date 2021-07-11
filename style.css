@@ -20,6 +20,7 @@ h3 {
 }
 footer {
   text-align: center;
+  color: #074259;
 }
 
 .card.w-200 {
@@ -121,4 +122,12 @@ footer {
   list-style: none;
   padding-top: 100px;
   font-style: italic;
+}
+
+#repository-link {
+  text-decoration: underline;
+}
+
+#repository-link:hover {
+  color: white;
 }
