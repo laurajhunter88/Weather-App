@@ -23,9 +23,10 @@ footer {
   color: #074259;
 }
 
-.card.w-200 {
+.card.body {
   background-color: #9ac9ce;
-  margin-top: 20px;
+  max-width: 600px;
+  margin: 30px auto;
 }
 .search {
   text-align: center;
@@ -120,7 +121,7 @@ footer {
   font-family: "Rajdhani", sans-serif;
   margin: 0 0 10px;
   list-style: none;
-  padding-top: 100px;
+  padding-top: 150px;
   font-style: italic;
 }
 
@@ -130,4 +131,11 @@ footer {
 
 #repository-link:hover {
   color: white;
+}
+
+h4 {
+  text-align: left;
+  color: #074259;
+  font-family: "Rajdhani", sans-serif;
+  text-transform: capitalize;
 }
