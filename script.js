@@ -1,36 +1,4 @@
-// Current Day and Time
-
-function formatDayTime() {
-  let days = [
-    "Sunday",
-    "Monday",
-    "Tueday",
-    "Wednesday",
-    "Thursday",
-    "Friday",
-    "Saturday",
-  ];
-
-  let now = new Date();
-  let day = days[now.getDay()];
-  let hours = now.getHours();
-  let minutes = now.getMinutes();
-
-  if (hours < 10) {
-    hours = `0${hours}`;
-  }
-
-  if (minutes < 10) {
-    minutes = `0${minutes}`;
-  }
-
-  return `${day} ${hours}:${minutes}`;
-}
-
-let today = document.querySelector("#current-date");
-today.innerHTML = formatDayTime();
-
-// Search Engine
+//Default Weather Info
 
 function defaultCity(city) {
   let apiKey = "0b02db9e81bd4747b05a8fe268d2b9a4";
@@ -38,6 +6,8 @@ function defaultCity(city) {
   let searchApiUrl = `https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${apiKey}${unit}`;
   axios.get(searchApiUrl).then(displayLocationWeather);
 }
+
+// Search Engine
 
 function displayCitySearch(event) {
   event.preventDefault();
@@ -51,8 +21,9 @@ function displayCitySearch(event) {
 let form = document.querySelector("#search-form");
 form.addEventListener("submit", displayCitySearch);
 
+// Weather Info
+
 function displayLocationWeather(response) {
-  console.log(response);
   let location = document.querySelector("#city-name");
   location.innerHTML = `${response.data.name}`;
 
@@ -71,7 +42,41 @@ function displayLocationWeather(response) {
   let description = response.data.weather[0].description;
   let currentDescription = document.querySelector("#current-description");
   currentDescription.innerHTML = description;
+
+  let date = document.querySelector("#current-date");
+  date.innerHTML = formatDayTime(response.data.dt * 1000);
 }
+
+// Current Day and Time
+
+function formatDayTime(timestamp) {
+  let date = new Date(timestamp);
+  let hours = date.getHours();
+  let minutes = date.getMinutes();
+
+  if (hours < 10) {
+    hours = `0${hours}`;
+  }
+
+  if (minutes < 10) {
+    minutes = `0${minutes}`;
+  }
+
+  let days = [
+    "Sunday",
+    "Monday",
+    "Tueday",
+    "Wednesday",
+    "Thursday",
+    "Friday",
+    "Saturday",
+  ];
+  let day = days[date.getDay()];
+
+  return ` Last updated: ${day} ${hours}:${minutes}`;
+}
+
+// Current Location Button
 
 function showLocation(position) {
   console.log(position);
@@ -92,25 +97,3 @@ let button = document.querySelector("#current-button");
 button.addEventListener("click", getCurrentLocation);
 
 defaultCity("London");
-
-// Unit Links - need to fix
-
-//function changeToFarenheit(event) {
-//event.preventDefault();
-
-//let tempF = document.querySelector(".temp");
-//tempF.innerHTML = `(${tempC} × 9/5) + 32`;
-//}
-//let farenheitLink = document.querySelector("#fahrenheit-link");
-//farenheitLink.addEventListener("click", changeToFarenheit);
-
-//function changeToCelsius(event) {
-//event.preventDefault();
-
-//let tempC = document.querySelector(".temp");
-//tempC.innerHTML = `19`;
-//}
-//let celsiusLink = document.querySelector("#celsius-link");
-//celsiusLink.addEventListener("click", changeToCelsius);
-
-// Current Location Button
