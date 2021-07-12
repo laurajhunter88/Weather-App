@@ -45,6 +45,15 @@ function displayLocationWeather(response) {
 
   let date = document.querySelector("#current-date");
   date.innerHTML = formatDayTime(response.data.dt * 1000);
+
+  let icon = document.querySelector("#weather-icon");
+  let iconCode = response.data.weather[0].icon;
+  icon.setAttribute(
+    "src",
+    `http://openweathermap.org/img/wn/${iconCode}@2x.png`
+  );
+
+  icon.setAttribute("alt", response.data.weather[0].description);
 }
 
 // Current Day and Time
