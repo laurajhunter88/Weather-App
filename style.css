@@ -17,9 +17,17 @@ h3 {
   list-style: none;
   font-family: "Rajdhani", sans-serif;
   color: #074259;
-  font-size: 24px;
+  font-size: 16px;
   font-weight: bold;
 }
+
+h4 {
+  text-align: left;
+  color: #074259;
+  font-family: "Rajdhani", sans-serif;
+  text-transform: capitalize;
+}
+
 footer {
   text-align: center;
   color: #074259;
@@ -133,11 +141,4 @@ footer {
 
 #repository-link:hover {
   color: white;
-}
-
-h4 {
-  text-align: left;
-  color: #074259;
-  font-family: "Rajdhani", sans-serif;
-  text-transform: capitalize;
 }
