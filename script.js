@@ -123,6 +123,32 @@ function changeToCelsius(event) {
   farenheitLink.classList.remove("active");
 }
 
+// Forecast Info
+
+function displayForecast() {
+  let forecast = document.querySelector("#forecast");
+
+  let forecastHTML = "";
+  forecast.innerHTML = forecastHTML;
+
+  forecast.innerHTML = `
+  <div class="row forecast-row">
+              <div class="col-2">
+                <div class="day-name">Wednesday</div>
+                <span class="forecast-temp" id="forecast-one-temp"></span>
+                  <span class="forecast-units">
+                    <a href="#" class="temperature active" id="forecast-one-celsius-link"
+                      >°C</a
+                    >
+                    |
+                    <a href="#" class="temperature" id="forecast-one-fahrenheit-link">°F</a>
+                  </span>
+                <img src="" alt="" id="" />
+                </div>
+          </div>
+  `;
+}
+
 // Global Variables
 
 let form = document.querySelector("#search-form");
@@ -140,3 +166,4 @@ let celsiusLink = document.querySelector("#celsius-link");
 celsiusLink.addEventListener("click", changeToCelsius);
 
 defaultCity("London");
+displayForecast();
