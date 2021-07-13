@@ -14,7 +14,6 @@ a {
 }
 
 h3 {
-  list-style: none;
   font-family: "Rajdhani", sans-serif;
   color: #074259;
   font-size: 16px;
@@ -36,8 +35,9 @@ footer {
 
 .card.body {
   background-color: #9ac9ce;
-  max-width: 600px;
+
   margin: 30px auto;
+  width: 1000px;
 }
 
 .search {
@@ -78,6 +78,7 @@ footer {
   border-color: #096579;
   border-style: solid;
   box-shadow: 5px 5px 20px #6bb0b7;
+
   max-width: 100%;
 }
 
@@ -160,6 +161,28 @@ footer {
   list-style: none;
 
   font-style: italic;
+}
+
+.day-name {
+  font-family: "Rajdhani", sans-serif;
+  color: #074259;
+  font-size: 16px;
+  font-weight: bold;
+  text-align: center;
+}
+
+.forecast-temp {
+  text-align: center;
+  font-size: 36px;
+  color: #074259;
+  font-family: "Rajdhani", sans-serif;
+}
+
+.forecast-units {
+  font-family: "Rajdhani", sans-serif;
+  color: #074259;
+  font-size: 12px;
+  font-weight: bold;
 }
 
 #repository-link {
