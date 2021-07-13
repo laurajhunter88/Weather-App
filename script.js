@@ -1,4 +1,4 @@
-//Default Weather Info
+// Default Weather Info
 
 function defaultCity(city) {
   let apiKey = "0b02db9e81bd4747b05a8fe268d2b9a4";
@@ -18,17 +18,16 @@ function displayCitySearch(event) {
   defaultCity(city);
 }
 
-let form = document.querySelector("#search-form");
-form.addEventListener("submit", displayCitySearch);
-
 // Weather Info
 
 function displayLocationWeather(response) {
   let location = document.querySelector("#city-name");
   location.innerHTML = `${response.data.name}`;
 
-  let temp = Math.round(response.data.main.temp);
+  celsiusTemperature = response.data.main.temp;
+
   let currentTemperature = document.querySelector("#current-temp");
+  let temp = Math.round(celsiusTemperature);
   currentTemperature.innerHTML = `${temp}`;
 
   let humidity = Math.round(response.data.main.humidity);
@@ -88,7 +87,6 @@ function formatDayTime(timestamp) {
 // Current Location Button
 
 function showLocation(position) {
-  console.log(position);
   let lat = position.coords.latitude;
   let long = position.coords.longitude;
   let apiKey = "0b02db9e81bd4747b05a8fe268d2b9a4";
@@ -102,7 +100,43 @@ function getCurrentLocation() {
   navigator.geolocation.getCurrentPosition(showLocation);
 }
 
+// Unit Links
+
+function changeToFarenheit(event) {
+  event.preventDefault();
+
+  let tempF = document.querySelector("#current-temp");
+  let cToFConversion = (celsiusTemperature * 9) / 5 + 32;
+  tempF.innerHTML = Math.round(cToFConversion);
+
+  celsiusLink.classList.remove("active");
+  farenheitLink.classList.add("active");
+}
+
+function changeToCelsius(event) {
+  event.preventDefault();
+
+  let tempC = document.querySelector("#current-temp");
+  tempC.innerHTML = Math.round(celsiusTemperature);
+
+  celsiusLink.classList.add("active");
+  farenheitLink.classList.remove("active");
+}
+
+// Global Variables
+
+let form = document.querySelector("#search-form");
+form.addEventListener("submit", displayCitySearch);
+
 let button = document.querySelector("#current-button");
 button.addEventListener("click", getCurrentLocation);
+
+let celsiusTemperature = null;
+
+let farenheitLink = document.querySelector("#fahrenheit-link");
+farenheitLink.addEventListener("click", changeToFarenheit);
+
+let celsiusLink = document.querySelector("#celsius-link");
+celsiusLink.addEventListener("click", changeToCelsius);
 
 defaultCity("London");
