@@ -68,7 +68,6 @@ footer {
   margin: 30px auto;
   width: 1000px;
   display: block;
-
   margin-top: 50px;
   margin-bottom: 50px;
   border-color: #096579;
@@ -79,7 +78,7 @@ footer {
 
 .card.inner {
   border-radius: 15px;
-  width: 300px;
+  width: 450px;
   display: block;
   margin: 0 auto;
   margin-top: 50px;
