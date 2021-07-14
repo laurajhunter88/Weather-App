@@ -127,35 +127,64 @@ function changeToCelsius(event) {
 
 // Forecast HTML
 
+function formatDay(timestamp) {
+  let date = new Date(timestamp * 1000);
+  let day = date.getDay();
+  let days = ["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"];
+
+  return days[day];
+}
+
 function displayForecast(response) {
-  console.log(response.data.daily);
-  let forecast = document.querySelector("#forecast");
+  let forecastElement = document.querySelector("#forecast");
+  let dailyForecast = response.data.daily;
+  let forecastHTML = `<div class="row forecast-row">`;
 
-  let forecastHTML = "";
-  forecast.innerHTML = forecastHTML;
-
-  forecast.innerHTML = `
-  <div class="row forecast-row">
+  dailyForecast.forEach(function (forecastDay, index) {
+    if (index < 6) {
+      forecastHTML =
+        forecastHTML +
+        `
               <div class="col-2">
-                <div class="day-name">Wednesday</div>
-                <span class="forecast-temp" id="forecast-one-temp"></span>
+                <div class="day-name">${formatDay(forecastDay.dt)}</div>
+                
+                <img 
+                src="http://openweathermap.org/img/wn/${
+                  forecastDay.weather[0].icon
+                }@2x.png" 
+                alt="" 
+                id="forecast-icon"
+                width="42" />
+                
+                <span class="forecast-temp" id="forecast-temp-min">
+                  ${Math.round(
+                    forecastDay.temp.min
+                  )}</span> - <span class="forecast-temp" id="forecast-temp-max">
+                  ${Math.round(forecastDay.temp.max)}</span>
+                  <br/>
                   <span class="forecast-units">
-                    <a href="#" class="temperature active" id="forecast-one-celsius-link"
+                    <a href="#" class="temperature active" id="forecast-celsius-link"
                       >°C</a
                     >
                     |
-                    <a href="#" class="temperature" id="forecast-one-fahrenheit-link">°F</a>
+                    <a href="#" class="temperature" id="forecast-fahrenheit-link">°F</a>
                   </span>
-                <img src="" alt="" id="" />
+                  
                 </div>
-          </div>
+              </div>
   `;
+    }
+  });
+
+  forecastHTML = forecastHTML + `</div>`;
+
+  forecastElement.innerHTML = forecastHTML;
+  console.log(forecastHTML);
 }
 
 // Forecast Weather Info
 
 function getForecast(coordinates) {
-  console.log(coordinates);
   let apiKey = "0b02db9e81bd4747b05a8fe268d2b9a4";
   let unit = "&units=metric";
   let lat = coordinates.lat;

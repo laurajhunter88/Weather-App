@@ -33,13 +33,6 @@ footer {
   color: #074259;
 }
 
-.card.body {
-  background-color: #9ac9ce;
-
-  margin: 30px auto;
-  width: 1000px;
-}
-
 .search {
   text-align: center;
 }
@@ -70,23 +63,43 @@ footer {
   color: white;
 }
 
-.card {
+.card.body {
+  background-color: #9ac9ce;
+  margin: 30px auto;
+  width: 1000px;
   display: block;
-  margin: 0 auto;
+
   margin-top: 50px;
   margin-bottom: 50px;
   border-color: #096579;
   border-style: solid;
   box-shadow: 5px 5px 20px #6bb0b7;
-
   max-width: 100%;
 }
 
 .card.inner {
   border-radius: 15px;
+  width: 500px;
+  display: block;
+  margin: 0 auto;
+  margin-top: 50px;
+  margin-bottom: 50px;
+  border-color: #074259;
+  border-style: solid;
+  box-shadow: 5px 5px 20px #096579;
+}
+
+.card.forecast-card {
+  display: block;
+  margin: 0 auto;
+  border-radius: 15px;
   margin-left: 30px;
   margin-right: 30px;
   max-width: 100%;
+  border-color: #074259;
+  border-style: solid;
+  box-shadow: 5px 5px 20px #096579;
+  margin-bottom: 50px;
 }
 
 .float-left {
@@ -96,7 +109,7 @@ footer {
 
 .card-title {
   text-align: center;
-  font-size: 40px;
+  font-size: 44px;
   color: #074259;
   font-family: "Poppins", sans-serif;
   margin-bottom: 15px;
@@ -166,14 +179,18 @@ footer {
 .day-name {
   font-family: "Rajdhani", sans-serif;
   color: #074259;
-  font-size: 16px;
+  font-size: 20px;
   font-weight: bold;
   text-align: center;
 }
 
+.forecast-row {
+  padding: 10px 10px;
+}
+
 .forecast-temp {
   text-align: center;
-  font-size: 36px;
+  font-size: 16px;
   color: #074259;
   font-family: "Rajdhani", sans-serif;
 }
@@ -181,8 +198,15 @@ footer {
 .forecast-units {
   font-family: "Rajdhani", sans-serif;
   color: #074259;
-  font-size: 12px;
+  text-align: center;
   font-weight: bold;
+  display: block;
+  margin: 0 auto;
+}
+
+#forecast-icon {
+  display: block;
+  margin: 0 auto;
 }
 
 #repository-link {
