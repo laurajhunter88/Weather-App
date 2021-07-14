@@ -53,6 +53,8 @@ function displayLocationWeather(response) {
   );
 
   icon.setAttribute("alt", response.data.weather[0].description);
+
+  getForecast(response.data.coord);
 }
 
 // Current Day and Time
@@ -123,9 +125,10 @@ function changeToCelsius(event) {
   farenheitLink.classList.remove("active");
 }
 
-// Forecast Info
+// Forecast HTML
 
-function displayForecast() {
+function displayForecast(response) {
+  console.log(response.data.daily);
   let forecast = document.querySelector("#forecast");
 
   let forecastHTML = "";
@@ -149,6 +152,19 @@ function displayForecast() {
   `;
 }
 
+// Forecast Weather Info
+
+function getForecast(coordinates) {
+  console.log(coordinates);
+  let apiKey = "0b02db9e81bd4747b05a8fe268d2b9a4";
+  let unit = "&units=metric";
+  let lat = coordinates.lat;
+  let lon = coordinates.lon;
+  let apiUrl = `https://api.openweathermap.org/data/2.5/onecall?lat=${lat}&lon=${lon}&appid=${apiKey}${unit}`;
+
+  axios.get(apiUrl).then(displayForecast);
+}
+
 // Global Variables
 
 let form = document.querySelector("#search-form");
@@ -166,4 +182,3 @@ let celsiusLink = document.querySelector("#celsius-link");
 celsiusLink.addEventListener("click", changeToCelsius);
 
 defaultCity("London");
-displayForecast();
