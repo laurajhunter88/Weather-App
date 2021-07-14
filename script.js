@@ -138,6 +138,7 @@ function formatDay(timestamp) {
 function displayForecast(response) {
   let forecastElement = document.querySelector("#forecast");
   let dailyForecast = response.data.daily;
+
   let forecastHTML = `<div class="row forecast-row">`;
 
   dailyForecast.forEach(function (forecastDay, index) {
@@ -155,22 +156,13 @@ function displayForecast(response) {
                 alt="" 
                 id="forecast-icon"
                 width="42" />
-                
-                <span class="forecast-temp" id="forecast-temp-min">
-                  ${Math.round(
-                    forecastDay.temp.min
-                  )}</span> - <span class="forecast-temp" id="forecast-temp-max">
-                  ${Math.round(forecastDay.temp.max)}</span>
-                  <br/>
-                  <span class="forecast-units">
-                    <a href="#" class="temperature active" id="forecast-celsius-link"
-                      >°C</a
-                    >
-                    |
-                    <a href="#" class="temperature" id="forecast-fahrenheit-link">°F</a>
-                  </span>
+
+                <span class="forecast-temp" id="forecast-temp-max">
+                  ${Math.round(forecastDay.temp.max)}°C /</span>
                   
-                </div>
+                <span class="forecast-temp" id="forecast-temp-min">
+                  ${Math.round(forecastDay.temp.min)}°C</span>  
+                
               </div>
   `;
     }
@@ -179,8 +171,9 @@ function displayForecast(response) {
   forecastHTML = forecastHTML + `</div>`;
 
   forecastElement.innerHTML = forecastHTML;
-  console.log(forecastHTML);
 }
+
+// Forecast Unit Links
 
 // Forecast Weather Info
 

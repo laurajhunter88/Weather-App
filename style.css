@@ -193,15 +193,16 @@ footer {
   font-size: 16px;
   color: #074259;
   font-family: "Rajdhani", sans-serif;
-}
-
-.forecast-units {
-  font-family: "Rajdhani", sans-serif;
-  color: #074259;
-  text-align: center;
-  font-weight: bold;
   display: block;
   margin: 0 auto;
+}
+
+#forecast-temp-max {
+  font-weight: bolder;
+}
+
+#forecast-temp-min {
+  opacity: 0.7;
 }
 
 #forecast-icon {
